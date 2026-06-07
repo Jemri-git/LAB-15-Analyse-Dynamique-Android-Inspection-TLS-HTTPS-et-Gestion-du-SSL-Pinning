@@ -177,9 +177,7 @@ L'app "Attack me if u can" contient plusieurs modules de test. Le module ciblé 
 ```
 OMTG_NETW_004_SSL_PINNING_WHOLE_CERT
 ```
-
-> 📸 **[SCREEN 6 — Insérer ici]**  
-> *Capture de l'app OMTG ouverte sur Genymotion montrant la liste des modules dont OMTG_NETW_004_SSL_PINNING_WHOLE_CERT visible*
+<img width="452" height="898" alt="image" src="https://github.com/user-attachments/assets/30ff5174-66c0-4670-a292-234a89047ce0" />
 
 ### 5.3 Test d'injection minimal
 
@@ -192,9 +190,6 @@ frida -U -f sg.vp.owasp_mobile.omtg_android -l hello.js
 Spawned `sg.vp.owasp_mobile.omtg_android`. Resuming main thread!
 [Phone::sg.vp.owasp_mobile.omtg_android ]-> [+] Frida Java.perform OK
 ```
-
-> 📸 **[SCREEN 7 — Insérer ici]**  
-> *Capture du terminal montrant `[+] Frida Java.perform OK` après injection de hello.js sur l'app OMTG*
 
 ---
 
@@ -213,10 +208,7 @@ Le script couvre 5 vecteurs de SSL pinning :
 | WebView | Apps WebView | Hook onReceivedSslError |
 
 ### 6.2 Script complet
-
-```javascript
-
-```
+sslpin_bypass_universal.js est disponible dans le repository.
 
 ### 6.3 Exécution
 
@@ -225,14 +217,7 @@ frida -U -f sg.vp.owasp_mobile.omtg_android -l sslpin_bypass_universal.js
 ```
 
 ### 6.4 Logs obtenus
-
-```
-Spawned `sg.vp.owasp_mobile.omtg_android`. Resuming main thread!
-[Phone::sg.vp.owasp_mobile.omtg_android ]-> [+] SSL bypass: SSLContext.init patched
-```
-
-> 📸 **[SCREEN 8 — Insérer ici]**  
-> *Capture du terminal montrant `[+] SSL bypass: SSLContext.init patched` après lancement du script sur l'app OMTG*
+<img width="821" height="282" alt="image" src="https://github.com/user-attachments/assets/445bfa43-f0c7-478c-8cb9-9019dd098464" />
 
 ### 6.5 Analyse des résultats
 
@@ -376,14 +361,10 @@ frida -U -f sg.vp.owasp_mobile.omtg_android `
 | Certificat Burp installé | ✅ | PortSwigger dans Trusted credentials |
 | Proxy Wi-Fi configuré | ✅ | Trafic HTTP navigateur visible dans Burp |
 | Hook SSLContext.init actif | ✅ | `[+] SSL bypass: SSLContext.init patched` |
-| Capture Burp HTTPS app cible | ⚠️ | OMTG bypass proxy système via NSC |
-
-### 9.2 Logs Frida confirmés
-
-<img width="821" height="282" alt="image" src="https://github.com/user-attachments/assets/445bfa43-f0c7-478c-8cb9-9019dd098464" />
 
 
-### 9.3 Pourquoi OMTG ne passe pas par Burp
+
+### 9.2 Pourquoi OMTG ne passe pas par Burp
 
 Deux causes combinées expliquent l'absence de trafic dans Burp :
 
